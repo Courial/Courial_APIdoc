@@ -255,7 +255,6 @@ Confirms that a delivery is serviceable by Courial API and what it would cost by
 | &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "tax_type_unspecified" "gst_hst" "qst" "pst" "unrecognized" Name of the tax component.|
 | &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the tax component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
 | `support_reference`  | string | No       | Internal reference for this delivery; reference it when talking or writing to Courial API support.        |
-| `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `dropoff_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was dropped off.        |
 | `pickup_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was picked up.        |
 | `shipping_label`  | object | No       | The label for a delivery.        |
@@ -285,7 +284,9 @@ Confirms that a delivery is serviceable by Courial API and what it would cost by
 | `driver_vehicle_make`  | string | No       | Make of the Driver's vehicle.        |
 | `driver_vehicle_model`  | string | No       | Model of the Driver's vehicle.        |
 | `driver_vehicle_year`  | string | No       | Year of the Driver's vehicle.        |
-<!--| `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | --> 
+<!--| `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | 
+| `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
+--> 
 
 
 - **400: Request Validation Failed**
@@ -536,7 +537,6 @@ Creates a delivery.
 | &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "tax_type_unspecified" "gst_hst" "qst" "pst" "unrecognized" Name of the tax component. |
 | &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the tax component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
 | `support_reference`  | string | No       | Internal reference for this delivery; reference it when talking or writing to Courial API support.        |
-| `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `dropoff_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was dropped off.        |
 | `pickup_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was picked up.        |
 | `shipping_label`  | object | No       | The label for a delivery.        |
@@ -566,7 +566,9 @@ Creates a delivery.
 | `driver_vehicle_make`  | string | No       | Make of the Driver's vehicle.        |
 | `driver_vehicle_model`  | string | No       | Model of the Driver's vehicle.        |
 | `driver_vehicle_year`  | string | No       | Year of the Driver's vehicle.        |
-<!-- | `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | --> 
+<!-- | `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | 
+| `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
+--> 
 
 
 - **400: Request Validation Failed**
@@ -718,7 +720,6 @@ Cancel a delivery. Deliveries can't be cancelled after a Driver is assigned.
 | &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "tax_type_unspecified" "gst_hst" "qst" "pst" "unrecognized" Name of the tax component.. |
 | &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the tax component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
 | `support_reference`  | string | No       | Internal reference for this delivery; reference it when talking or writing to Courial API support.        |
-| `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `dropoff_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was dropped off.        |
 | `pickup_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was picked up.        |
 | `shipping_label`  | object | No       | The label for a delivery.        |
@@ -748,7 +749,9 @@ Cancel a delivery. Deliveries can't be cancelled after a Driver is assigned.
 | `driver_vehicle_make`  | string | No       | Make of the Driver's vehicle.        |
 | `driver_vehicle_model`  | string | No       | Model of the Driver's vehicle.        |
 | `driver_vehicle_year`  | string | No       | Year of the Driver's vehicle.        |
-<!--| `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | --> 
+<!--| `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | 
+| `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
+--> 
 
  **`RESPONSE samples`**
   
@@ -960,7 +963,6 @@ Returns the status and details of a delivery that client created. Client can pro
 | &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "tax_type_unspecified" "gst_hst" "qst" "pst" "unrecognized" Name of the tax component. |
 | &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the tax component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
 | `support_reference`  | string | No       | Internal reference for this delivery; reference it when talking or writing to Courial API support.        |
-| `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `dropoff_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was dropped off.        |
 | `pickup_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was picked up.        |
 | `shipping_label`  | object | No       | The label for a delivery.        |
@@ -990,7 +992,8 @@ Returns the status and details of a delivery that client created. Client can pro
 | `driver_vehicle_make`  | string | No       | Make of the Driver's vehicle.        |
 | `driver_vehicle_model`  | string | No       | Model of the Driver's vehicle.        |
 | `driver_vehicle_year`  | string | No       | Year of the Driver's vehicle.        |
-<!-- | `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | --> 
+<!-- | `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | 
+| `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |-->
 
 
 - **400: Request Validation Failed**
@@ -1247,7 +1250,6 @@ Update the details of a delivery. Only the fields listed below can be updated; t
 | &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "tax_type_unspecified" "gst_hst" "qst" "pst" "unrecognized" Name of the tax component.|
 | &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the tax component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
 | `support_reference`  | string | No       | Internal reference for this delivery; reference it when talking or writing to Courial API support.        |
-| `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `dropoff_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was dropped off.        |
 | `pickup_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was picked up.        |
 | `shipping_label`  | object | No       | The label for a delivery.        |
@@ -1277,7 +1279,9 @@ Update the details of a delivery. Only the fields listed below can be updated; t
 | `driver_vehicle_make`  | string | No       | Make of the Driver's vehicle.        |
 | `driver_vehicle_model`  | string | No       | Model of the Driver's vehicle.        |
 | `driver_vehicle_year`  | string | No       | Year of the Driver's vehicle.        |
-<!-- | `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | -->
+<!-- | `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | 
+| `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
+-->
 
 
 **`Response samples`**
