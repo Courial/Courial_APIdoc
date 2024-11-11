@@ -1249,7 +1249,7 @@ Update the details of a delivery. Only the fields listed below can be updated; t
 | `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `dropoff_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was dropped off.        |
 | `pickup_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was picked up.        |
-<!-- | `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | --> | `shipping_label`  | object | No       | The label for a delivery.        |
+<!-- | `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | -->| `shipping_label`  | object | No       | The label for a delivery.        |
 | &nbsp;&nbsp;↳ `label_format`   | string | No  | Value: 'zpl'. The file format of the label. |
 | &nbsp;&nbsp;↳ `label_size`   | string | No  | Value: '4x6'. The size of label. |
 | &nbsp;&nbsp;↳ `print_density`   | string | No  | Enum: "203dpi" "300dpi" The printing density of label. |
