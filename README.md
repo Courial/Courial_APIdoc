@@ -258,7 +258,7 @@ Confirms that a delivery is serviceable by Courial API and what it would cost by
 | `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `dropoff_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was dropped off.        |
 | `pickup_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was picked up.        |
-| `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        |
+<!--| `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | -->
 | `shipping_label`  | object | No       | The label for a delivery.        |
 | &nbsp;&nbsp;↳ `label_format`   | string | No  | Value: 'zpl'. The file format of the label. |
 | &nbsp;&nbsp;↳ `label_size`   | string | No  | Value: '4x6'. The size of label. |
@@ -540,7 +540,7 @@ Creates a delivery.
 | `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `dropoff_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was dropped off.        |
 | `pickup_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was picked up.        |
-| `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        |
+<!-- | `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | -->
 | `shipping_label`  | object | No       | The label for a delivery.        |
 | &nbsp;&nbsp;↳ `label_format`   | string | No  | Value: 'zpl'. The file format of the label. |
 | &nbsp;&nbsp;↳ `label_size`   | string | No  | Value: '4x6'. The size of label. |
@@ -723,7 +723,7 @@ Cancel a delivery. Deliveries can't be cancelled after a Driver is assigned.
 | `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `dropoff_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was dropped off.        |
 | `pickup_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was picked up.        |
-| `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        |
+<!--| `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | -->
 | `shipping_label`  | object | No       | The label for a delivery.        |
 | &nbsp;&nbsp;↳ `label_format`   | string | No  | Value: 'zpl'. The file format of the label. |
 | &nbsp;&nbsp;↳ `label_size`   | string | No  | Value: '4x6'. The size of label. |
@@ -965,7 +965,7 @@ Returns the status and details of a delivery that client created. Client can pro
 | `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `dropoff_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was dropped off.        |
 | `pickup_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was picked up.        |
-| `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        |
+<!-- | `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | -->
 | `shipping_label`  | object | No       | The label for a delivery.        |
 | &nbsp;&nbsp;↳ `label_format`   | string | No  | Value: 'zpl'. The file format of the label. |
 | &nbsp;&nbsp;↳ `label_size`   | string | No  | Value: '4x6'. The size of label. |
@@ -1253,7 +1253,7 @@ Update the details of a delivery. Only the fields listed below can be updated; t
 | `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `dropoff_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was dropped off.        |
 | `pickup_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was picked up.        |
-| `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        |
+<!-- | `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | -->
 | `shipping_label`  | object | No       | The label for a delivery.        |
 | &nbsp;&nbsp;↳ `label_format`   | string | No  | Value: 'zpl'. The file format of the label. |
 | &nbsp;&nbsp;↳ `label_size`   | string | No  | Value: '4x6'. The size of label. |
@@ -1490,7 +1490,7 @@ Webhooks contain all of the details about a delivery that are available when the
 | `dropoff_time_actual` | When the delivery was dropped off	 | All events after and including `DRIVER_DROPPED_OFF` |
 | `dropoff_time_estimated` | When the delivery is estimated to be dropped off | All events |
 | `dropoff_verification_image_url` | The verification image taken by the Driver when the order was dropped off	 | All events |
-| `dropoff_signature_image_url` | The signature image obtained from the customer when the order was dropped off if applicable | All events |
+<!--| `dropoff_signature_image_url` | The signature image obtained from the customer when the order was dropped off if applicable | All events | -->
 
 
 ### Cancellation Reasons
