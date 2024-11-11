@@ -1448,12 +1448,11 @@ API should send webhooks for the following events, as soon as the event takes pl
 
 <!-- #### **Return-to-Pickup Deliveries Only**
 Deliveries that can be returned-to-pickup may generate webhooks for the following events:
--->
 - **DELIVERY_RETURN_INITIALIZED**: The Driver was unable to deliver your delivery to the dropoff location; they contacted support to arrange a return-to-pickup delivery and are returning to the pickup location.
 - **DRIVER_CONFIRMED_RETURN_ARRIVAL**: The Driver has confirmed that they arrived at the pickup location and are attempting to return the delivery.
 - **DELIVERY_RETURNED**: The delivery has been returned successfully.
 - **DELIVERY_CANCELLED (with reason = failed_to_return)**: The delivery was unable to be returned.
-
+-->
 
 #### **Delivery Tracking**
 Courial API can also provide various driver_enroute webhooks that send the location of the Driver every N seconds/minutes.
