@@ -1426,7 +1426,7 @@ Update the details of a delivery. Only the fields listed below can be updated; t
 ## API Webhooks (1.0.0)
 
 ### Courial API Webhooks
-Client should be able to receive updates about a delivery by subscribing to webhooks[webhooks](#api-webhooks-100).
+Client should be able to receive updates about a delivery by subscribing to webhooks 2 [webhooks](#api-webhooks-100).
 The Courial API should send delivery updates to the client as a REST payload.
 The client's app will provide an internet-accessible REST endpoint that will receive and process the webhooks as payload in `text/plain` format.
 Webhooks enable near-real-time information flow from Courial API and Drivers to client application and client customers.
