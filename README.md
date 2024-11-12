@@ -78,6 +78,12 @@ public class main {
   }
 }
 ```
+## Required Endpoints
+Endpoint that requires mandatory implementation.
+1. [Create Quote][#create-quote]
+2. [Create Delivery][#create-delivery]
+3. [Cancel Delivery][#cancel-delivery]
+
 [//]: <> (SECTION Create Quote.)
 ### Create Quote
 Confirms that a delivery is serviceable by Courial API and what it would cost by creating a quote. Get a quote on delivery fee and validates coverage.
