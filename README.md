@@ -81,8 +81,8 @@ public class main {
 ## Required Endpoints
 Endpoint that requires mandatory implementation.
 1. [Create Quote](#create-quote)
-2. [Create Delivery]([#create-delivery])
-3. [Cancel Delivery]([#cancel-delivery])
+2. [Create Delivery](#create-delivery)
+3. [Cancel Delivery](#cancel-delivery)
 
 [//]: <> (SECTION Create Quote.)
 ### Create Quote
@@ -889,6 +889,9 @@ Cancel a delivery. Deliveries can't be cancelled after a Driver is assigned.
 ## Optional Endpoints
 Endpoint that can be optionally implemented.
 Server can return the code 405 (Method Not Allowed) or 501 (Not Implemented)
+
+1. [Get Delivery](#get-delivery)
+2. [Update Delivery](#update-delivery)
 
 [//]: <> (SECTION Get Delivery.)
 ### Get Delivery
