@@ -80,9 +80,9 @@ public class main {
 ```
 ## Required Endpoints
 Endpoint that requires mandatory implementation.
-1. [Create Quote][#create-quote]
-2. [Create Delivery][#create-delivery]
-3. [Cancel Delivery][#cancel-delivery]
+1. [Create Quote]([#create-quote])
+2. [Create Delivery]([#create-delivery])
+3. [Cancel Delivery]([#cancel-delivery])
 
 [//]: <> (SECTION Create Quote.)
 ### Create Quote
