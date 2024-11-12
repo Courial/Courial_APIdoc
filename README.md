@@ -357,6 +357,7 @@ Confirms that a delivery is serviceable by Courial API and what it would cost by
 
 [//]: <> (SECTION Create Delivery.)
 
+---------------------------------------------------------------------------------------------------------------------------------------
 ### Create Delivery
 Creates a delivery.
 
@@ -637,7 +638,7 @@ Creates a delivery.
 | `code` | string | Yes      | Value: 'service_fault' |
 | `message` | string | Yes      | Default 'Internal service failure, please try again later'. |
 
-
+---------------------------------------------------------------------------------------------------------------------------------------
 [//]: <> (SECTION Cancel Delivery.)
 
 ### Cancel Delivery
@@ -877,7 +878,7 @@ Cancel a delivery. Deliveries can't be cancelled after a Driver is assigned.
 | `code` | string | Yes      | Value: 'service_fault' |
 | `message` | string | Yes      | Default 'Internal service failure, please try again later'. |
 
-
+---------------------------------------------------------------------------------------------------------------------------------------
 
 ## Optional Endpoints
 Endpoint that can be optionally implemented.
@@ -1063,7 +1064,7 @@ Returns the status and details of a delivery that client created. Client can pro
 | `message` | string | Yes      | Default 'Internal service failure, please try again later'. |
 
 
-
+---------------------------------------------------------------------------------------------------------------------------------------
 
 
 [//]: <> (SECTION UPDATE DELIVERY.)
