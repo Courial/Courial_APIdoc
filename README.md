@@ -115,10 +115,6 @@ Confirms that a delivery is serviceable by Courial API and what it would cost by
 | `dropoff_contact_given_name`  | string | No       | Given/first name of the contact.        |
 | `dropoff_contact_family_name`  | string | No       | Family/last name of the contact.        |
 | `dropoff_contact_send_notifications`  | boolean | No       | Whether the notifications should be sent to contact by Courial for this delivery. The default is false.        |
-| `dropoff_options`  | object | No       | Additional options for drop off.        |
-| &nbsp;&nbsp;↳ `signature`   | string | No  | Enum: "required" "preferred" "none" <br> Flag to specify if the delivery requires signature verification during drop off. Not updatable. |
-| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
-| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
 | `order_value`  | integer | No       | The subtotal for all items in the order, excluding tax/tip, in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `items`  | Array of objects (DeliveryItem) | No       |  Array of following items       |
 | &nbsp;&nbsp;↳ `name`   | string | Yes  | Name of the item being delivered. |
@@ -131,14 +127,19 @@ Confirms that a delivery is serviceable by Courial API and what it would cost by
 | `pickup_time`  | string | No       | Time details in ISO-8601 format.        |
 | `dropoff_time`  | string | No       |  Time details in ISO-8601 format.        |
 | `contactless_dropoff`  | boolean | No       | Whether the delivery should be contactless, which prompts a Driver to take a picture of the delivery at drop-off.        |
-| `action_if_undeliverable`  | string | No       | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'.        |
 | `tip`  | integer | No       | The tip amount. Use cents or the equivalent lowest currency denomination (e.g. $5.99 = 599).        |
 | `order_contains`  |  object (OrderContains) | No       | An object that specifies the restricted item(s) contained in this order.        |
 | &nbsp;&nbsp;↳ `alcohol`   | boolean | No  | Flag to specify if the delivery contains alcohol. |
 | `driver_allowed_vehicles	`  | Array of strings | No       | Items Enum: 'car', 'bicycle', 'walking'. The vehicle type(s) that a Driver can use to complete this delivery. The default is 'car'.        |
+<!-- 
+| `action_if_undeliverable`  | string | No       | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'.        |
 | `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
 | `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
-
+| `dropoff_options`  | object | No       | Additional options for drop off.        |
+| &nbsp;&nbsp;↳ `signature`   | string | No  | Enum: "required" "preferred" "none" <br> Flag to specify if the delivery requires signature verification during drop off. Not updatable. |
+| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
+| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
+ -->
 
   **`Request samples`**
   
@@ -222,10 +223,6 @@ Confirms that a delivery is serviceable by Courial API and what it would cost by
 | `dropoff_contact_given_name`  | string | No       | Given/first name of the contact.        |
 | `dropoff_contact_family_name`  | string | No       | Family/last name of the contact.        |
 | `dropoff_contact_send_notifications`  | boolean | No       | Whether the notifications should be sent to contact by Courial for this delivery. The default is false.        |
-| `dropoff_options`  | object | No       | Additional options for drop off.        |
-| &nbsp;&nbsp;↳ `signature`   | string | No  | Enum: "required" "preferred" "none" <br> Flag to specify if the delivery requires signature verification during drop off. Not updatable. |
-| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
-| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
 | `order_value`  | integer | No       | The subtotal for all items in the order, excluding tax/tip, in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `currency`  | string | Yes       |  Currency of the order       |
 | `items`  | Array of objects (DeliveryItem) | No       |  Array of following items       |
@@ -243,37 +240,15 @@ Confirms that a delivery is serviceable by Courial API and what it would cost by
 | `pickup_time_actual`  | string | No       | Actual time of pickup in ISO-8601 format; null if not yet picked up.        |
 | `dropoff_time_estimated`  | string | No       | Estimated time of drop off in ISO-8601 format; null if already picked up.        |
 | `dropoff_time_actual`  | string | No       | Actual time of drop off in ISO-8601 format; null if not yet picked up.       |
-| `return_time_estimated`  | string | No       | Estimated time of return in ISO-8601 format; null if delivery is not returnable or already returned.        |
-| `return_time_actual`  | string | No       | Actual time of return in ISO-8601 format; null if return is not returnable or the return is not yet completed.        |
-| `return_address`  | string | No       | If a delivery is being returned-to-pickup, this is the address where the delivery will be returned.        |
 | `fee`  | integer | Yes       | Delivery Fee in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599 or null if not available.        |
-| `fee_components`  | Array of objects (FeeComponent) | No       | The charges that were applied for this delivery; sums to fee.       |
-| &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "drive_fee_component_type_unspecified" "distance_based_fee" "order_value_based_fee" "service_fee" "mx_subsidy" "other" "driver_regulatory_fee" "promotion" "small_order_fee" "flat_fee" "dwt_fee" "unrecognized" Name of the fee component |
-| &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the fee component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
-| `tax`  | integer | No       | Delivery tax in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599 or null if not available.        |
-| `tax_components`  | Array of objects (TaxComponent) | No       | The taxes that were applied for this delivery; sums to tax.      |
-| &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "tax_type_unspecified" "gst_hst" "qst" "pst" "unrecognized" Name of the tax component.|
-| &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the tax component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
 | `support_reference`  | string | No       | Internal reference for this delivery; reference it when talking or writing to Courial API support.        |
 | `dropoff_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was dropped off.        |
 | `pickup_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was picked up.        |
-| `shipping_label`  | object | No       | The label for a delivery.        |
-| &nbsp;&nbsp;↳ `label_format`   | string | No  | Value: 'zpl'. The file format of the label. |
-| &nbsp;&nbsp;↳ `label_size`   | string | No  | Value: '4x6'. The size of label. |
-| &nbsp;&nbsp;↳ `print_density`   | string | No  | Enum: "203dpi" "300dpi" The printing density of label. |
-| &nbsp;&nbsp;↳ `label_string`   | string | No  | A Base64-encoded string of label content. |
-| `dropped_items`  | 	Array of objects (DroppedItem) | No       |          |
-| &nbsp;&nbsp;↳ `external_id`   | string | Yes  | The Merchant's External ID for the item. |
-| &nbsp;&nbsp;↳ `type`   | string | Yes  | Value: Enum: "main_item" "substitute_item" Type of the item dropped |
-| &nbsp;&nbsp;↳ `reason`   | string | Yes  | Enum: "item_not_found_in_catalog" "item_suspended" "item_not_considered" Reason why the item was dropped |
 | `contactless_dropoff`   | boolean | No  | Whether the delivery should be contactless, which prompts a Driver to take a picture of the delivery at drop-off. |
-| `action_if_undeliverable`   | string | No  | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'. |
 | `tip`   | integer | No  | The tip amount. Use cents or the equivalent lowest currency denomination (e.g. $5.99 = 599). |
 | `order_contains`  | object (OrderContains) | No       | An object that specifies the restricted item(s) contained in this order.        |
 | &nbsp;&nbsp;↳ `alcohol`   | boolean | No  | Flag to specify if the delivery contains alcohol. |
 | `driver_allowed_vehicles`  | Array of strings | No       | Items Enum: 'car', 'bicycle', 'walking'. The vehicle type(s) that a  Driver can use to complete this delivery. The default is 'car'.        |
-| `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
-| `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `driver_id`  | integer | No       | Unique identifier for the Driver.        |
 | `driver_name`  | string | No       | First name and last initial of the Driver delivering the order.        |
 | `driver_dropoff_phone_number`  | string | No       | Phone number for the Driver; can only be called from dropoff_phone_number. Should include the country code.       |
@@ -286,6 +261,32 @@ Confirms that a delivery is serviceable by Courial API and what it would cost by
 | `driver_vehicle_year`  | string | No       | Year of the Driver's vehicle.        |
 <!--| `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | 
 | `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
+| `fee_components`  | Array of objects (FeeComponent) | No       | The charges that were applied for this delivery; sums to fee.       |
+| &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "drive_fee_component_type_unspecified" "distance_based_fee" "order_value_based_fee" "service_fee" "mx_subsidy" "other" "driver_regulatory_fee" "promotion" "small_order_fee" "flat_fee" "dwt_fee" "unrecognized" Name of the fee component |
+| &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the fee component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
+| `tax`  | integer | No       | Delivery tax in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599 or null if not available.        |
+| `tax_components`  | Array of objects (TaxComponent) | No       | The taxes that were applied for this delivery; sums to tax.      |
+| &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "tax_type_unspecified" "gst_hst" "qst" "pst" "unrecognized" Name of the tax component.|
+| &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the tax component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
+| `action_if_undeliverable`   | string | No  | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'. |
+| `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
+| `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
+| `dropoff_options`  | object | No       | Additional options for drop off.        |
+| &nbsp;&nbsp;↳ `signature`   | string | No  | Enum: "required" "preferred" "none" <br> Flag to specify if the delivery requires signature verification during drop off. Not updatable. |
+| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
+| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
+| `return_time_estimated`  | string | No       | Estimated time of return in ISO-8601 format; null if delivery is not returnable or already returned.        |
+| `return_time_actual`  | string | No       | Actual time of return in ISO-8601 format; null if return is not returnable or the return is not yet completed.        |
+| `return_address`  | string | No       | If a delivery is being returned-to-pickup, this is the address where the delivery will be returned.        |
+| `shipping_label`  | object | No       | The label for a delivery.        |
+| &nbsp;&nbsp;↳ `label_format`   | string | No  | Value: 'zpl'. The file format of the label. |
+| &nbsp;&nbsp;↳ `label_size`   | string | No  | Value: '4x6'. The size of label. |
+| &nbsp;&nbsp;↳ `print_density`   | string | No  | Enum: "203dpi" "300dpi" The printing density of label. |
+| &nbsp;&nbsp;↳ `label_string`   | string | No  | A Base64-encoded string of label content. |
+| `dropped_items`  | 	Array of objects (DroppedItem) | No       |          |
+| &nbsp;&nbsp;↳ `external_id`   | string | Yes  | The Merchant's External ID for the item. |
+| &nbsp;&nbsp;↳ `type`   | string | Yes  | Value: Enum: "main_item" "substitute_item" Type of the item dropped |
+| &nbsp;&nbsp;↳ `reason`   | string | Yes  | Enum: "item_not_found_in_catalog" "item_suspended" "item_not_considered" Reason why the item was dropped |
 --> 
 
 
@@ -397,10 +398,6 @@ Creates a delivery.
 | `dropoff_contact_given_name`  | string | No       | Given/first name of the contact.        |
 | `dropoff_contact_family_name`  | string | No       | Family/last name of the contact.        |
 | `dropoff_contact_send_notifications`  | boolean | No       | Whether the notifications should be sent to contact by Courial for this delivery. The default is false.        |
-| `dropoff_options`  | object | No       | Additional options for drop off.        |
-| &nbsp;&nbsp;↳ `signature`   | string | No  | Enum: "required" "preferred" "none" <br> Flag to specify if the delivery requires signature verification during drop off. Not updatable. |
-| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
-| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
 | `order_value`  | integer | No       | The subtotal for all items in the order, excluding tax/tip, in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `items`  | Array of objects (DeliveryItem) | No       |  Array of following items       |
 | &nbsp;&nbsp;↳ `name`   | string | Yes  | Name of the item being delivered. |
@@ -413,14 +410,19 @@ Creates a delivery.
 | `pickup_time`  | string | No       | Time details in ISO-8601 format.        |
 | `dropoff_time`  | string | No       |  Time details in ISO-8601 format.        |
 | `contactless_dropoff`  | boolean | No       | Whether the delivery should be contactless, which prompts a Driver to take a picture of the delivery at drop-off.        |
-| `action_if_undeliverable`  | string | No       | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'.        |
 | `tip`  | integer | No       | The tip amount. Use cents or the equivalent lowest currency denomination (e.g. $5.99 = 599).        |
 | `order_contains`  |  object (OrderContains) | No       | An object that specifies the restricted item(s) contained in this order.        |
 | &nbsp;&nbsp;↳ `alcohol`   | boolean | No  | Flag to specify if the delivery contains alcohol. |
 | `driver_allowed_vehicles	`  | Array of strings | No       | Items Enum: 'car', 'bicycle', 'walking'. The vehicle type(s) that a Driver can use to complete this delivery. The default is 'car'.        |
+<!-- 
+| `action_if_undeliverable`  | string | No       | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'.        |
 | `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
 | `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
-
+| `dropoff_options`  | object | No       | Additional options for drop off.        |
+| &nbsp;&nbsp;↳ `signature`   | string | No  | Enum: "required" "preferred" "none" <br> Flag to specify if the delivery requires signature verification during drop off. Not updatable. |
+| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
+| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
+-->
 
   **`Request samples`**
   
@@ -504,10 +506,6 @@ Creates a delivery.
 | `dropoff_contact_given_name`  | string | No       | Given/first name of the contact.        |
 | `dropoff_contact_family_name`  | string | No       | Family/last name of the contact.        |
 | `dropoff_contact_send_notifications`  | boolean | No       | Whether the notifications should be sent to contact by Courial for this delivery. The default is false.        |
-| `dropoff_options`  | object | No       | Additional options for drop off.        |
-| &nbsp;&nbsp;↳ `signature`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if the delivery requires signature verification during drop off. Not updatable. |
-| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
-| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
 | `order_value`  | integer | No       | The subtotal for all items in the order, excluding tax/tip, in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `currency`  | string | Yes       |  Currency of the order       |
 | `items`  | Array of objects (DeliveryItem) | No       |  Array of following items       |
@@ -525,37 +523,15 @@ Creates a delivery.
 | `pickup_time_actual`  | string | No       | Actual time of pickup in ISO-8601 format; null if not yet picked up.        |
 | `dropoff_time_estimated`  | string | No       | Estimated time of drop off in ISO-8601 format; null if already picked up.        |
 | `dropoff_time_actual`  | string | No       | Actual time of drop off in ISO-8601 format; null if not yet picked up.       |
-| `return_time_estimated`  | string | No       | Estimated time of return in ISO-8601 format; null if delivery is not returnable or already returned.        |
-| `return_time_actual`  | string | No       | Actual time of return in ISO-8601 format; null if return is not returnable or the return is not yet completed.        |
-| `return_address`  | string | No       | If a delivery is being returned-to-pickup, this is the address where the delivery will be returned.        |
 | `fee`  | integer | Yes       | Delivery Fee in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599 or null if not available.        |
-| `fee_components`  | Array of objects (FeeComponent) | No       | The charges that were applied for this delivery; sums to fee.       |
-| &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "drive_fee_component_type_unspecified" "distance_based_fee" "order_value_based_fee" "service_fee" "mx_subsidy" "other" "driver_regulatory_fee" "promotion" "small_order_fee" "flat_fee" "dwt_fee" "unrecognized" Name of the fee component. |
-| &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the fee component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599.|
-| `tax`  | integer | No       | Delivery tax in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599 or null if not available.        |
-| `tax_components`  | Array of objects (TaxComponent) | No       | The taxes that were applied for this delivery; sums to tax.      |
-| &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "tax_type_unspecified" "gst_hst" "qst" "pst" "unrecognized" Name of the tax component. |
-| &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the tax component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
 | `support_reference`  | string | No       | Internal reference for this delivery; reference it when talking or writing to Courial API support.        |
 | `dropoff_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was dropped off.        |
 | `pickup_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was picked up.        |
-| `shipping_label`  | object | No       | The label for a delivery.        |
-| &nbsp;&nbsp;↳ `label_format`   | string | No  | Value: 'zpl'. The file format of the label. |
-| &nbsp;&nbsp;↳ `label_size`   | string | No  | Value: '4x6'. The size of label. |
-| &nbsp;&nbsp;↳ `print_density`   | string | No  | Enum: "203dpi" "300dpi" The printing density of label. |
-| &nbsp;&nbsp;↳ `label_string`   | string | No  | A Base64-encoded string of label content. |
-| `dropped_items`  | 	Array of objects (DroppedItem) | No       |          |
-| &nbsp;&nbsp;↳ `external_id`   | string | Yes  | The Merchant's External ID for the item. |
-| &nbsp;&nbsp;↳ `type`   | string | Yes  | Value: Enum: "main_item" "substitute_item" Type of the item dropped |
-| &nbsp;&nbsp;↳ `reason`   | string | Yes  | Enum: "item_not_found_in_catalog" "item_suspended" "item_not_considered" Reason why the item was dropped |
 | `contactless_dropoff`   | boolean | No  | Whether the delivery should be contactless, which prompts a Driver to take a picture of the delivery at drop-off. |
-| `action_if_undeliverable`   | string | No  | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'. |
 | `tip`   | integer | No  | The tip amount. Use cents or the equivalent lowest currency denomination (e.g. $5.99 = 599). |
 | `order_contains`  | object (OrderContains) | No       | An object that specifies the restricted item(s) contained in this order.        |
 | &nbsp;&nbsp;↳ `alcohol`   | boolean | No  | Flag to specify if the delivery contains alcohol. |
 | `driver_allowed_vehicles`  | Array of strings | No       | Items Enum: 'car', 'bicycle', 'walking'. The vehicle type(s) that a  Driver can use to complete this delivery. The default is 'car'.        |
-| `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
-| `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `driver_id`  | integer | No       | Unique identifier for the Driver.        |
 | `driver_name`  | string | No       | First name and last initial of the Driver delivering the order.        |
 | `driver_dropoff_phone_number`  | string | No       | Phone number for the Driver; can only be called from dropoff_phone_number. Should include the country code.       |
@@ -568,6 +544,32 @@ Creates a delivery.
 | `driver_vehicle_year`  | string | No       | Year of the Driver's vehicle.        |
 <!-- | `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | 
 | `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
+| `fee_components`  | Array of objects (FeeComponent) | No       | The charges that were applied for this delivery; sums to fee.       |
+| &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "drive_fee_component_type_unspecified" "distance_based_fee" "order_value_based_fee" "service_fee" "mx_subsidy" "other" "driver_regulatory_fee" "promotion" "small_order_fee" "flat_fee" "dwt_fee" "unrecognized" Name of the fee component. |
+| &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the fee component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599.|
+| `tax`  | integer | No       | Delivery tax in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599 or null if not available.        |
+| `tax_components`  | Array of objects (TaxComponent) | No       | The taxes that were applied for this delivery; sums to tax.      |
+| &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "tax_type_unspecified" "gst_hst" "qst" "pst" "unrecognized" Name of the tax component. |
+| &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the tax component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
+| `action_if_undeliverable`   | string | No  | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'. |
+| `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
+| `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
+| `dropoff_options`  | object | No       | Additional options for drop off.        |
+| &nbsp;&nbsp;↳ `signature`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if the delivery requires signature verification during drop off. Not updatable. |
+| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
+| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
+| `return_time_estimated`  | string | No       | Estimated time of return in ISO-8601 format; null if delivery is not returnable or already returned.        |
+| `return_time_actual`  | string | No       | Actual time of return in ISO-8601 format; null if return is not returnable or the return is not yet completed.        |
+| `return_address`  | string | No       | If a delivery is being returned-to-pickup, this is the address where the delivery will be returned.        |
+| `shipping_label`  | object | No       | The label for a delivery.        |
+| &nbsp;&nbsp;↳ `label_format`   | string | No  | Value: 'zpl'. The file format of the label. |
+| &nbsp;&nbsp;↳ `label_size`   | string | No  | Value: '4x6'. The size of label. |
+| &nbsp;&nbsp;↳ `print_density`   | string | No  | Enum: "203dpi" "300dpi" The printing density of label. |
+| &nbsp;&nbsp;↳ `label_string`   | string | No  | A Base64-encoded string of label content. |
+| `dropped_items`  | 	Array of objects (DroppedItem) | No       |          |
+| &nbsp;&nbsp;↳ `external_id`   | string | Yes  | The Merchant's External ID for the item. |
+| &nbsp;&nbsp;↳ `type`   | string | Yes  | Value: Enum: "main_item" "substitute_item" Type of the item dropped |
+| &nbsp;&nbsp;↳ `reason`   | string | Yes  | Enum: "item_not_found_in_catalog" "item_suspended" "item_not_considered" Reason why the item was dropped |
 --> 
 
 
@@ -687,10 +689,6 @@ Cancel a delivery. Deliveries can't be cancelled after a Driver is assigned.
 | `dropoff_contact_given_name`  | string | No       | Given/first name of the contact.        |
 | `dropoff_contact_family_name`  | string | No       | Family/last name of the contact.        |
 | `dropoff_contact_send_notifications`  | boolean | No       | Whether the notifications should be sent to contact by Courial for this delivery. The default is false.        |
-| `dropoff_options`  | object | No       | Additional options for drop off.        |
-| &nbsp;&nbsp;↳ `signature`   | string | No  | Enum: "required" "preferred" "none"  Flag to specify if the delivery requires signature verification during drop off. Not updatable. |
-| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
-| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
 | `order_value`  | integer | No       | The subtotal for all items in the order, excluding tax/tip, in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `currency`  | string | Yes       |  Currency of the order       |
 | `items`  | Array of objects (DeliveryItem) | No       |  Array of following items       |
@@ -708,37 +706,15 @@ Cancel a delivery. Deliveries can't be cancelled after a Driver is assigned.
 | `pickup_time_actual`  | string | No       | Actual time of pickup in ISO-8601 format; null if not yet picked up.        |
 | `dropoff_time_estimated`  | string | No       | Estimated time of drop off in ISO-8601 format; null if already picked up.        |
 | `dropoff_time_actual`  | string | No       | Actual time of drop off in ISO-8601 format; null if not yet picked up.       |
-| `return_time_estimated`  | string | No       | Estimated time of return in ISO-8601 format; null if delivery is not returnable or already returned.        |
-| `return_time_actual`  | string | No       | Actual time of return in ISO-8601 format; null if return is not returnable or the return is not yet completed.        |
-| `return_address`  | string | No       | If a delivery is being returned-to-pickup, this is the address where the delivery will be returned.        |
 | `fee`  | integer | Yes       | Delivery Fee in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599 or null if not available.        |
-| `fee_components`  | Array of objects (FeeComponent) | No       | The charges that were applied for this delivery; sums to fee.       |
-| &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "drive_fee_component_type_unspecified" "distance_based_fee" "order_value_based_fee" "service_fee" "mx_subsidy" "other" "driver_regulatory_fee" "promotion" "small_order_fee" "flat_fee" "dwt_fee" "unrecognized" Name of the fee component. |
-| &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the fee component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. Description of the item being del |
-| `tax`  | integer | No       | Delivery tax in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599 or null if not available.        |
-| `tax_components`  | Array of objects (TaxComponent) | No       | The taxes that were applied for this delivery; sums to tax.      |
-| &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "tax_type_unspecified" "gst_hst" "qst" "pst" "unrecognized" Name of the tax component.. |
-| &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the tax component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
 | `support_reference`  | string | No       | Internal reference for this delivery; reference it when talking or writing to Courial API support.        |
 | `dropoff_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was dropped off.        |
 | `pickup_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was picked up.        |
-| `shipping_label`  | object | No       | The label for a delivery.        |
-| &nbsp;&nbsp;↳ `label_format`   | string | No  | Value: 'zpl'. The file format of the label. |
-| &nbsp;&nbsp;↳ `label_size`   | string | No  | Value: '4x6'. The size of label. |
-| &nbsp;&nbsp;↳ `print_density`   | string | No  | Enum: "203dpi" "300dpi" The printing density of label. |
-| &nbsp;&nbsp;↳ `label_string`   | string | No  | A Base64-encoded string of label content. |
-| `dropped_items`  | 	Array of objects (DroppedItem) | No       |          |
-| &nbsp;&nbsp;↳ `external_id`   | string | Yes  | The Merchant's External ID for the item. |
-| &nbsp;&nbsp;↳ `type`   | string | Yes  | Value: Enum: "main_item" "substitute_item" Type of the item dropped |
-| &nbsp;&nbsp;↳ `reason`   | string | Yes  | Enum: "item_not_found_in_catalog" "item_suspended" "item_not_considered" Reason why the item was dropped |
 | `contactless_dropoff`   | boolean | No  | Whether the delivery should be contactless, which prompts a Driver to take a picture of the delivery at drop-off. |
-| `action_if_undeliverable`   | string | No  | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'. |
 | `tip`   | integer | No  | The tip amount. Use cents or the equivalent lowest currency denomination (e.g. $5.99 = 599). |
 | `order_contains`  | object (OrderContains) | No       | An object that specifies the restricted item(s) contained in this order.        |
 | &nbsp;&nbsp;↳ `alcohol`   | boolean | No  | Flag to specify if the delivery contains alcohol. |
 | `driver_allowed_vehicles`  | Array of strings | No       | Items Enum: 'car', 'bicycle', 'walking'. The vehicle type(s) that a  Driver can use to complete this delivery. The default is 'car'.        |
-| `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
-| `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `driver_id`  | integer | No       | Unique identifier for the Driver.        |
 | `driver_name`  | string | No       | First name and last initial of the Driver delivering the order.        |
 | `driver_dropoff_phone_number`  | string | No       | Phone number for the Driver; can only be called from dropoff_phone_number. Should include the country code.       |
@@ -751,6 +727,32 @@ Cancel a delivery. Deliveries can't be cancelled after a Driver is assigned.
 | `driver_vehicle_year`  | string | No       | Year of the Driver's vehicle.        |
 <!--| `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | 
 | `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
+| `fee_components`  | Array of objects (FeeComponent) | No       | The charges that were applied for this delivery; sums to fee.       |
+| &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "drive_fee_component_type_unspecified" "distance_based_fee" "order_value_based_fee" "service_fee" "mx_subsidy" "other" "driver_regulatory_fee" "promotion" "small_order_fee" "flat_fee" "dwt_fee" "unrecognized" Name of the fee component. |
+| &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the fee component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
+| `tax`  | integer | No       | Delivery tax in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599 or null if not available.        |
+| `tax_components`  | Array of objects (TaxComponent) | No       | The taxes that were applied for this delivery; sums to tax.      |
+| &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "tax_type_unspecified" "gst_hst" "qst" "pst" "unrecognized" Name of the tax component.. |
+| &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the tax component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
+| `action_if_undeliverable`   | string | No  | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'. |
+| `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
+| `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
+| `dropoff_options`  | object | No       | Additional options for drop off.        |
+| &nbsp;&nbsp;↳ `signature`   | string | No  | Enum: "required" "preferred" "none"  Flag to specify if the delivery requires signature verification during drop off. Not updatable. |
+| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
+| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
+| `return_time_estimated`  | string | No       | Estimated time of return in ISO-8601 format; null if delivery is not returnable or already returned.        |
+| `return_time_actual`  | string | No       | Actual time of return in ISO-8601 format; null if return is not returnable or the return is not yet completed.        |
+| `return_address`  | string | No       | If a delivery is being returned-to-pickup, this is the address where the delivery will be returned.        |
+| `shipping_label`  | object | No       | The label for a delivery.        |
+| &nbsp;&nbsp;↳ `label_format`   | string | No  | Value: 'zpl'. The file format of the label. |
+| &nbsp;&nbsp;↳ `label_size`   | string | No  | Value: '4x6'. The size of label. |
+| &nbsp;&nbsp;↳ `print_density`   | string | No  | Enum: "203dpi" "300dpi" The printing density of label. |
+| &nbsp;&nbsp;↳ `label_string`   | string | No  | A Base64-encoded string of label content. |
+| `dropped_items`  | 	Array of objects (DroppedItem) | No       |          |
+| &nbsp;&nbsp;↳ `external_id`   | string | Yes  | The Merchant's External ID for the item. |
+| &nbsp;&nbsp;↳ `type`   | string | Yes  | Value: Enum: "main_item" "substitute_item" Type of the item dropped |
+| &nbsp;&nbsp;↳ `reason`   | string | Yes  | Enum: "item_not_found_in_catalog" "item_suspended" "item_not_considered" Reason why the item was dropped |
 --> 
 
  **`RESPONSE samples`**
@@ -930,10 +932,6 @@ Returns the status and details of a delivery that client created. Client can pro
 | `dropoff_contact_given_name`  | string | No       | Given/first name of the contact.        |
 | `dropoff_contact_family_name`  | string | No       | Family/last name of the contact.        |
 | `dropoff_contact_send_notifications`  | boolean | No       | Whether the notifications should be sent to contact by Courial for this delivery. The default is false.        |
-| `dropoff_options`  | object | No       | Additional options for drop off.        |
-| &nbsp;&nbsp;↳ `signature`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if the delivery requires signature verification during drop off. Not updatable. |
-| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
-| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
 | `order_value`  | integer | No       | The subtotal for all items in the order, excluding tax/tip, in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `currency`  | string | Yes       |  Currency of the order       |
 | `items`  | Array of objects (DeliveryItem) | No       |  Array of following items       |
@@ -951,37 +949,15 @@ Returns the status and details of a delivery that client created. Client can pro
 | `pickup_time_actual`  | string | No       | Actual time of pickup in ISO-8601 format; null if not yet picked up.        |
 | `dropoff_time_estimated`  | string | No       | Estimated time of drop off in ISO-8601 format; null if already picked up.        |
 | `dropoff_time_actual`  | string | No       | Actual time of drop off in ISO-8601 format; null if not yet picked up.       |
-| `return_time_estimated`  | string | No       | Estimated time of return in ISO-8601 format; null if delivery is not returnable or already returned.        |
-| `return_time_actual`  | string | No       | Actual time of return in ISO-8601 format; null if return is not returnable or the return is not yet completed.        |
-| `return_address`  | string | No       | If a delivery is being returned-to-pickup, this is the address where the delivery will be returned.        |
 | `fee`  | integer | Yes       | Delivery Fee in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599 or null if not available.        |
-| `fee_components`  | Array of objects (FeeComponent) | No       | The charges that were applied for this delivery; sums to fee.       |
-| &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "drive_fee_component_type_unspecified" "distance_based_fee" "order_value_based_fee" "service_fee" "mx_subsidy" "other" "driver_regulatory_fee" "promotion" "small_order_fee" "flat_fee" "dwt_fee" "unrecognized" Name of the fee component. |
-| &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the fee component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
-| `tax`  | integer | No       | Delivery tax in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599 or null if not available.        |
-| `tax_components`  | Array of objects (TaxComponent) | No       | The taxes that were applied for this delivery; sums to tax.      |
-| &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "tax_type_unspecified" "gst_hst" "qst" "pst" "unrecognized" Name of the tax component. |
-| &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the tax component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
 | `support_reference`  | string | No       | Internal reference for this delivery; reference it when talking or writing to Courial API support.        |
 | `dropoff_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was dropped off.        |
 | `pickup_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was picked up.        |
-| `shipping_label`  | object | No       | The label for a delivery.        |
-| &nbsp;&nbsp;↳ `label_format`   | string | No  | Value: 'zpl'. The file format of the label. |
-| &nbsp;&nbsp;↳ `label_size`   | string | No  | Value: '4x6'. The size of label. |
-| &nbsp;&nbsp;↳ `print_density`   | string | No  | Enum: "203dpi" "300dpi" The printing density of label. |
-| &nbsp;&nbsp;↳ `label_string`   | string | No  | A Base64-encoded string of label content. |
-| `dropped_items`  | 	Array of objects (DroppedItem) | No       |          |
-| &nbsp;&nbsp;↳ `external_id`   | string | Yes  | The Merchant's External ID for the item. |
-| &nbsp;&nbsp;↳ `type`   | string | Yes  | Value: Enum: "main_item" "substitute_item" Type of the item dropped |
-| &nbsp;&nbsp;↳ `reason`   | string | Yes  | Enum: "item_not_found_in_catalog" "item_suspended" "item_not_considered" Reason why the item was dropped |
 | `contactless_dropoff`   | boolean | No  | Whether the delivery should be contactless, which prompts a Driver to take a picture of the delivery at drop-off. |
-| `action_if_undeliverable`   | string | No  | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'. |
 | `tip`   | integer | No  | The tip amount. Use cents or the equivalent lowest currency denomination (e.g. $5.99 = 599). |
 | `order_contains`  | object (OrderContains) | No       | An object that specifies the restricted item(s) contained in this order.        |
 | &nbsp;&nbsp;↳ `alcohol`   | boolean | No  | Flag to specify if the delivery contains alcohol. |
 | `driver_allowed_vehicles`  | Array of strings | No       | Items Enum: 'car', 'bicycle', 'walking'. The vehicle type(s) that a  Driver can use to complete this delivery. The default is 'car'.        |
-| `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
-| `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `driver_id`  | integer | No       | Unique identifier for the Driver.        |
 | `driver_name`  | string | No       | First name and last initial of the Driver delivering the order.        |
 | `driver_dropoff_phone_number`  | string | No       | Phone number for the Driver; can only be called from dropoff_phone_number. Should include the country code.       |
@@ -993,7 +969,34 @@ Returns the status and details of a delivery that client created. Client can pro
 | `driver_vehicle_model`  | string | No       | Model of the Driver's vehicle.        |
 | `driver_vehicle_year`  | string | No       | Year of the Driver's vehicle.        |
 <!-- | `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | 
-| `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |-->
+| `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
+| `fee_components`  | Array of objects (FeeComponent) | No       | The charges that were applied for this delivery; sums to fee.       |
+| &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "drive_fee_component_type_unspecified" "distance_based_fee" "order_value_based_fee" "service_fee" "mx_subsidy" "other" "driver_regulatory_fee" "promotion" "small_order_fee" "flat_fee" "dwt_fee" "unrecognized" Name of the fee component. |
+| &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the fee component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
+| `tax`  | integer | No       | Delivery tax in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599 or null if not available.        |
+| `tax_components`  | Array of objects (TaxComponent) | No       | The taxes that were applied for this delivery; sums to tax.      |
+| &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "tax_type_unspecified" "gst_hst" "qst" "pst" "unrecognized" Name of the tax component. |
+| &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the tax component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
+| `action_if_undeliverable`   | string | No  | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'. |
+| `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
+| `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
+| `dropoff_options`  | object | No       | Additional options for drop off.        |
+| &nbsp;&nbsp;↳ `signature`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if the delivery requires signature verification during drop off. Not updatable. |
+| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
+| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
+| `return_time_estimated`  | string | No       | Estimated time of return in ISO-8601 format; null if delivery is not returnable or already returned.        |
+| `return_time_actual`  | string | No       | Actual time of return in ISO-8601 format; null if return is not returnable or the return is not yet completed.        |
+| `return_address`  | string | No       | If a delivery is being returned-to-pickup, this is the address where the delivery will be returned.        |
+| `shipping_label`  | object | No       | The label for a delivery.        |
+| &nbsp;&nbsp;↳ `label_format`   | string | No  | Value: 'zpl'. The file format of the label. |
+| &nbsp;&nbsp;↳ `label_size`   | string | No  | Value: '4x6'. The size of label. |
+| &nbsp;&nbsp;↳ `print_density`   | string | No  | Enum: "203dpi" "300dpi" The printing density of label. |
+| &nbsp;&nbsp;↳ `label_string`   | string | No  | A Base64-encoded string of label content. |
+| `dropped_items`  | 	Array of objects (DroppedItem) | No       |          |
+| &nbsp;&nbsp;↳ `external_id`   | string | Yes  | The Merchant's External ID for the item. |
+| &nbsp;&nbsp;↳ `type`   | string | Yes  | Value: Enum: "main_item" "substitute_item" Type of the item dropped |
+| &nbsp;&nbsp;↳ `reason`   | string | Yes  | Enum: "item_not_found_in_catalog" "item_suspended" "item_not_considered" Reason why the item was dropped |
+-->
 
 
 - **400: Request Validation Failed**
@@ -1109,18 +1112,11 @@ Update the details of a delivery. Only the fields listed below can be updated; t
 | `dropoff_contact_given_name`  | string | No       | Given/first name of the contact.        |
 | `dropoff_contact_family_name`  | string | No       | Family/last name of the contact.        |
 | `dropoff_contact_send_notifications`  | boolean | No       | Whether the notifications should be sent to contact by Courial for this delivery. The default is false.        |
-| `dropoff_options`  | object | No       | Additional options for drop off.        |
-| &nbsp;&nbsp;↳ `signature`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if the delivery requires signature verification during drop off. Not updatable. |
-| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
-| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
 | `contactless_dropoff`  | boolean | No       | Whether the delivery should be contactless, which prompts a Driver to take a picture of the delivery at drop-off.        |
-| `action_if_undeliverable`  | string | No       | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'.        |
 | `tip`  | integer | No       | The tip amount. Use cents or the equivalent lowest currency denomination (e.g. $5.99 = 599).        |
 | `order_contains`  |  object (OrderContains) | No       | An object that specifies the restricted item(s) contained in this order.        |
 | &nbsp;&nbsp;↳ `alcohol`   | boolean | No  | Flag to specify if the delivery contains alcohol. |
 | `driver_allowed_vehicles`  | Array of strings | No       | Items Enum: 'car', 'bicycle', 'walking'. The vehicle type(s) that a Driver can use to complete this delivery. The default is 'car'.        |
-| `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
-| `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `order_value`  | integer | No       | The subtotal for all items in the order, excluding tax/tip, in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `items`  | Array of objects (DeliveryItem) | No       |  Array of following items       |
 | &nbsp;&nbsp;↳ `name`   | string | No  | Name of the item being delivered. |
@@ -1132,7 +1128,15 @@ Update the details of a delivery. Only the fields listed below can be updated; t
 | &nbsp;&nbsp;↳ `barcode`   | string | No  | Barcode identifying the item. This value must be in one of the following formats: Data Matrix, AZTEC, Code 128, Code 39, Code 93, CODABAR, EAN 13, EAN 8, ITF, UPC A, UPC E, PDF417. Not updatable. |
 | `pickup_time`  | string | No       | Time details in ISO-8601 format.        |
 | `dropoff_time`  | string | No       |  Time details in ISO-8601 format.        |
-
+<!-- 
+| `action_if_undeliverable`  | string | No       | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'.        |
+| `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
+| `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
+| `dropoff_options`  | object | No       | Additional options for drop off.        |
+| &nbsp;&nbsp;↳ `signature`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if the delivery requires signature verification during drop off. Not updatable. |
+| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
+| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
+-->
 
 
   **`Request samples`**
@@ -1217,10 +1221,6 @@ Update the details of a delivery. Only the fields listed below can be updated; t
 | `dropoff_contact_given_name`  | string | No       | Given/first name of the contact.        |
 | `dropoff_contact_family_name`  | string | No       | Family/last name of the contact.        |
 | `dropoff_contact_send_notifications`  | boolean | No       | Whether the notifications should be sent to contact by Courial for this delivery. The default is false.        |
-| `dropoff_options`  | object | No       | Additional options for drop off.        |
-| &nbsp;&nbsp;↳ `signature`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if the delivery requires signature verification during drop off. Not updatable. |
-| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
-| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
 | `order_value` | integer | No |  The subtotal for all items in the order, excluding tax/tip, in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999. |
 | `currency` | string | Yes | Currency of the order |
 | `items`  | Array of objects (DeliveryItem) | No       |  Array of following items       |
@@ -1238,37 +1238,15 @@ Update the details of a delivery. Only the fields listed below can be updated; t
 | `pickup_time_actual`  | string | No |  Actual time of pickup in ISO-8601 format; null if not yet picked up. |
 | `dropoff_time_estimated`  | string | No | Estimated time of drop off in ISO-8601 format; null if already picked up. |
 | `dropoff_time_actual`  | string | No | Actual time of drop off in ISO-8601 format; null if not yet picked up. |
-| `return_time_estimated`  | string | No | Estimated time of return in ISO-8601 format; null if delivery is not returnable or already returned. |
-| `return_time_actual`  | string | No | Actual time of return in ISO-8601 format; null if return is not returnable or the return is not yet completed. |
-| `return_address`  | string | No | If a delivery is being returned-to-pickup, this is the address where the delivery will be returned.  |
 | `fee`  | integer | Yes       | Delivery Fee in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599 or null if not available.        |
-| `fee_components`  | Array of objects (FeeComponent) | No       | The charges that were applied for this delivery; sums to fee.       |
-| &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "drive_fee_component_type_unspecified" "distance_based_fee" "order_value_based_fee" "service_fee" "mx_subsidy" "other" "driver_regulatory_fee" "promotion" "small_order_fee" "flat_fee" "dwt_fee" "unrecognized" Name of the fee component. |
-| &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the fee component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
-| `tax`  | integer | No       | Delivery tax in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599 or null if not available.        |
-| `tax_components`  | Array of objects (TaxComponent) | No       | The taxes that were applied for this delivery; sums to tax.      |
-| &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "tax_type_unspecified" "gst_hst" "qst" "pst" "unrecognized" Name of the tax component.|
-| &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the tax component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
 | `support_reference`  | string | No       | Internal reference for this delivery; reference it when talking or writing to Courial API support.        |
 | `dropoff_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was dropped off.        |
 | `pickup_verification_image_url`  | string | No       | Link to the picture taken by the Driver to indicate where the order was picked up.        |
-| `shipping_label`  | object | No       | The label for a delivery.        |
-| &nbsp;&nbsp;↳ `label_format`   | string | No  | Value: 'zpl'. The file format of the label. |
-| &nbsp;&nbsp;↳ `label_size`   | string | No  | Value: '4x6'. The size of label. |
-| &nbsp;&nbsp;↳ `print_density`   | string | No  | Enum: "203dpi" "300dpi" The printing density of label. |
-| &nbsp;&nbsp;↳ `label_string`   | string | No  | A Base64-encoded string of label content. |
-| `dropped_items`  | 	Array of objects (DroppedItem) | No       |          |
-| &nbsp;&nbsp;↳ `external_id`   | string | Yes  | The Merchant's External ID for the item. |
-| &nbsp;&nbsp;↳ `type`   | string | Yes  | Value: Enum: "main_item" "substitute_item" Type of the item dropped |
-| &nbsp;&nbsp;↳ `reason`   | string | Yes  | Enum: "item_not_found_in_catalog" "item_suspended" "item_not_considered" Reason why the item was dropped |
 | `contactless_dropoff`   | boolean | No  | Whether the delivery should be contactless, which prompts a Driver to take a picture of the delivery at drop-off. |
-| `action_if_undeliverable`   | string | No  | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'. |
 | `tip`   | integer | No  | The tip amount. Use cents or the equivalent lowest currency denomination (e.g. $5.99 = 599). |
 | `order_contains`  | object (OrderContains) | No       | An object that specifies the restricted item(s) contained in this order.        |
 | &nbsp;&nbsp;↳ `alcohol`   | boolean | No  | Flag to specify if the delivery contains alcohol. |
 | `driver_allowed_vehicles`  | Array of strings | No       | Items Enum: 'car', 'bicycle', 'walking'. The vehicle type(s) that a  Driver can use to complete this delivery. The default is 'car'.        |
-| `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
-| `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `driver_id`  | integer | No       | Unique identifier for the Driver.        |
 | `driver_name`  | string | No       | First name and last initial of the Driver delivering the order.        |
 | `driver_dropoff_phone_number`  | string | No       | Phone number for the Driver; can only be called from dropoff_phone_number. Should include the country code.       |
@@ -1281,6 +1259,32 @@ Update the details of a delivery. Only the fields listed below can be updated; t
 | `driver_vehicle_year`  | string | No       | Year of the Driver's vehicle.        |
 <!-- | `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | 
 | `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
+| `fee_components`  | Array of objects (FeeComponent) | No       | The charges that were applied for this delivery; sums to fee.       |
+| &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "drive_fee_component_type_unspecified" "distance_based_fee" "order_value_based_fee" "service_fee" "mx_subsidy" "other" "driver_regulatory_fee" "promotion" "small_order_fee" "flat_fee" "dwt_fee" "unrecognized" Name of the fee component. |
+| &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the fee component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
+| `tax`  | integer | No       | Delivery tax in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599 or null if not available.        |
+| `tax_components`  | Array of objects (TaxComponent) | No       | The taxes that were applied for this delivery; sums to tax.      |
+| &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "tax_type_unspecified" "gst_hst" "qst" "pst" "unrecognized" Name of the tax component.|
+| &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the tax component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
+| `action_if_undeliverable`   | string | No  | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'. |
+| `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
+| `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
+| `dropoff_options`  | object | No       | Additional options for drop off.        |
+| &nbsp;&nbsp;↳ `signature`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if the delivery requires signature verification during drop off. Not updatable. |
+| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
+| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
+| `return_time_estimated`  | string | No | Estimated time of return in ISO-8601 format; null if delivery is not returnable or already returned. |
+| `return_time_actual`  | string | No | Actual time of return in ISO-8601 format; null if return is not returnable or the return is not yet completed. |
+| `return_address`  | string | No | If a delivery is being returned-to-pickup, this is the address where the delivery will be returned.  |
+| `shipping_label`  | object | No       | The label for a delivery.        |
+| &nbsp;&nbsp;↳ `label_format`   | string | No  | Value: 'zpl'. The file format of the label. |
+| &nbsp;&nbsp;↳ `label_size`   | string | No  | Value: '4x6'. The size of label. |
+| &nbsp;&nbsp;↳ `print_density`   | string | No  | Enum: "203dpi" "300dpi" The printing density of label. |
+| &nbsp;&nbsp;↳ `label_string`   | string | No  | A Base64-encoded string of label content. |
+| `dropped_items`  | 	Array of objects (DroppedItem) | No       |          |
+| &nbsp;&nbsp;↳ `external_id`   | string | Yes  | The Merchant's External ID for the item. |
+| &nbsp;&nbsp;↳ `type`   | string | Yes  | Value: Enum: "main_item" "substitute_item" Type of the item dropped |
+| &nbsp;&nbsp;↳ `reason`   | string | Yes  | Enum: "item_not_found_in_catalog" "item_suspended" "item_not_considered" Reason why the item was dropped |
 -->
 
 
@@ -1459,6 +1463,7 @@ Courial API can also provide various driver_enroute webhooks that send the locat
 
 - **DRIVER_ENROUTE_TO_PICKUP**: The Driver is on their way to pick up the delivery.
 - **DRIVER_ENROUTE_TO_DROPOFF**: The Driver is on their way to the dropoff location.
+<!-- - **DRIVER_ENROUTE_TO_RETURN**: The Driver is on their way back to the pickup location to return the items. -->
 
 ### Fields
 
