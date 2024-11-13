@@ -137,14 +137,14 @@ Confirms that a delivery is serviceable by Courial API and what it would cost by
 | `order_contains`  |  object (OrderContains) | No       | An object that specifies the restricted item(s) contained in this order.        |
 | &nbsp;&nbsp;↳ `alcohol`   | boolean | No  | Flag to specify if the delivery contains alcohol. |
 | `driver_allowed_vehicles	`  | Array of strings | No       | Items Enum: 'car', 'bicycle', 'walking'. The vehicle type(s) that a Driver can use to complete this delivery. The default is 'car'.        |
+| `dropoff_options`  | object | No       | Additional options for drop off.        |
+<!-- | &nbsp;&nbsp;↳ `signature`   | string | No  | Enum: "required" "preferred" "none" <br> Flag to specify if the delivery requires signature verification during drop off. Not updatable. | -->
+| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
+| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
 <!-- 
 | `action_if_undeliverable`  | string | No       | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'.        |
 | `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
 | `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
-| `dropoff_options`  | object | No       | Additional options for drop off.        |
-| &nbsp;&nbsp;↳ `signature`   | string | No  | Enum: "required" "preferred" "none" <br> Flag to specify if the delivery requires signature verification during drop off. Not updatable. |
-| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
-| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
  -->
 
   **`Request samples`**
