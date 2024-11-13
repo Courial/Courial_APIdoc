@@ -1175,7 +1175,7 @@ Update the details of a delivery. Only the fields listed below can be updated; t
       "dropoff_contact_family_name": "Doe",
       "dropoff_contact_send_notifications": true,
       "dropoff_options": {
-        "signature": "required",
+        // "signature": "required",
         "id_verification": "required",
         "proof_of_delivery": "photo_required"
       },
