@@ -140,8 +140,9 @@ Confirms that a delivery is serviceable by Courial API and what it would cost by
 | `dropoff_options`  | object | No       | Additional options for drop off.        |
 | &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
 | &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
-<!-- 
 | `action_if_undeliverable`  | string | No       | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'.        |
+<!-- 
+
 | `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
 | `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `dropoff_options`  | object | No       | Additional options for drop off.        |
@@ -270,6 +271,7 @@ Confirms that a delivery is serviceable by Courial API and what it would cost by
 | `dropoff_options`  | object | No       | Additional options for drop off.        |
 | &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
 | &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
+| `action_if_undeliverable`   | string | No  | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'. |
 <!--| `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | 
 | `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `fee_components`  | Array of objects (FeeComponent) | No       | The charges that were applied for this delivery; sums to fee.       |
@@ -279,7 +281,6 @@ Confirms that a delivery is serviceable by Courial API and what it would cost by
 | `tax_components`  | Array of objects (TaxComponent) | No       | The taxes that were applied for this delivery; sums to tax.      |
 | &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "tax_type_unspecified" "gst_hst" "qst" "pst" "unrecognized" Name of the tax component.|
 | &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the tax component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
-| `action_if_undeliverable`   | string | No  | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'. |
 | `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
 | `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `dropoff_options`  | object | No       | Additional options for drop off.        |
@@ -429,8 +430,8 @@ Creates a delivery.
 | `dropoff_options`  | object | No       | Additional options for drop off.        |
 | &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
 | &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
-<!-- 
 | `action_if_undeliverable`  | string | No       | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'.        |
+<!-- 
 | `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
 | `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `dropoff_options`  | object | No       | Additional options for drop off.        |
@@ -559,6 +560,7 @@ Creates a delivery.
 | `dropoff_options`  | object | No       | Additional options for drop off.        |
 | &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
 | &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
+| `action_if_undeliverable`   | string | No  | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'. |
 <!-- | `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | 
 | `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `fee_components`  | Array of objects (FeeComponent) | No       | The charges that were applied for this delivery; sums to fee.       |
@@ -568,7 +570,6 @@ Creates a delivery.
 | `tax_components`  | Array of objects (TaxComponent) | No       | The taxes that were applied for this delivery; sums to tax.      |
 | &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "tax_type_unspecified" "gst_hst" "qst" "pst" "unrecognized" Name of the tax component. |
 | &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the tax component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
-| `action_if_undeliverable`   | string | No  | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'. |
 | `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
 | `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `dropoff_options`  | object | No       | Additional options for drop off.        |
@@ -745,6 +746,7 @@ Cancel a delivery. Deliveries can't be cancelled after a Driver is assigned.
 | `dropoff_options`  | object | No       | Additional options for drop off.        |
 | &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
 | &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
+| `action_if_undeliverable`   | string | No  | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'. |
 <!--| `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | 
 | `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `fee_components`  | Array of objects (FeeComponent) | No       | The charges that were applied for this delivery; sums to fee.       |
@@ -754,7 +756,6 @@ Cancel a delivery. Deliveries can't be cancelled after a Driver is assigned.
 | `tax_components`  | Array of objects (TaxComponent) | No       | The taxes that were applied for this delivery; sums to tax.      |
 | &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "tax_type_unspecified" "gst_hst" "qst" "pst" "unrecognized" Name of the tax component.. |
 | &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the tax component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
-| `action_if_undeliverable`   | string | No  | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'. |
 | `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
 | `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `dropoff_options`  | object | No       | Additional options for drop off.        |
@@ -993,6 +994,7 @@ Returns the status and details of a delivery that client created. Client can pro
 | `dropoff_options`  | object | No       | Additional options for drop off.        |
 | &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
 | &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
+| `action_if_undeliverable`   | string | No  | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'. |
 <!-- | `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | 
 | `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `fee_components`  | Array of objects (FeeComponent) | No       | The charges that were applied for this delivery; sums to fee.       |
@@ -1002,7 +1004,6 @@ Returns the status and details of a delivery that client created. Client can pro
 | `tax_components`  | Array of objects (TaxComponent) | No       | The taxes that were applied for this delivery; sums to tax.      |
 | &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "tax_type_unspecified" "gst_hst" "qst" "pst" "unrecognized" Name of the tax component. |
 | &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the tax component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
-| `action_if_undeliverable`   | string | No  | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'. |
 | `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
 | `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `dropoff_options`  | object | No       | Additional options for drop off.        |
@@ -1156,8 +1157,8 @@ Update the details of a delivery. Only the fields listed below can be updated; t
 | `dropoff_options`  | object | No       | Additional options for drop off.        |
 | &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
 | &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
-<!-- 
 | `action_if_undeliverable`  | string | No       | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'.        |
+<!-- 
 | `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
 | `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `dropoff_options`  | object | No       | Additional options for drop off.        |
@@ -1287,6 +1288,7 @@ Update the details of a delivery. Only the fields listed below can be updated; t
 | `dropoff_options`  | object | No       | Additional options for drop off.        |
 | &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
 | &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
+| `action_if_undeliverable`   | string | No  | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'. |
 <!-- | `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | 
 | `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `fee_components`  | Array of objects (FeeComponent) | No       | The charges that were applied for this delivery; sums to fee.       |
@@ -1296,7 +1298,6 @@ Update the details of a delivery. Only the fields listed below can be updated; t
 | `tax_components`  | Array of objects (TaxComponent) | No       | The taxes that were applied for this delivery; sums to tax.      |
 | &nbsp;&nbsp;↳ `type`   | string | Yes  | Enum: "tax_type_unspecified" "gst_hst" "qst" "pst" "unrecognized" Name of the tax component.|
 | &nbsp;&nbsp;↳ `amount`   | integer | Yes  | Amount of the tax component in the lowest currency denomination (e.g. cents). i.e. $5.99 = 599. |
-| `action_if_undeliverable`   | string | No  | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'. |
 | `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
 | `dropoff_cash_on_delivery`  | integer | No       | The cash to collect when this order is dropped off, value in the lowest currency denomination (e.g. cents). i.e. $19.99 = 1999.        |
 | `dropoff_options`  | object | No       | Additional options for drop off.        |
