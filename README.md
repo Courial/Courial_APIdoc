@@ -174,7 +174,6 @@ Confirms that a delivery is serviceable by Courial API and what it would cost by
       "dropoff_contact_family_name": "Doe",
       "dropoff_contact_send_notifications": true,
       "dropoff_options": {
-        "signature": "required",
         "id_verification": "required",
         "proof_of_delivery": "photo_required"
       },
@@ -268,6 +267,9 @@ Confirms that a delivery is serviceable by Courial API and what it would cost by
 | `driver_vehicle_make`  | string | No       | Make of the Driver's vehicle.        |
 | `driver_vehicle_model`  | string | No       | Model of the Driver's vehicle.        |
 | `driver_vehicle_year`  | string | No       | Year of the Driver's vehicle.        |
+| `dropoff_options`  | object | No       | Additional options for drop off.        |
+| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
+| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
 <!--| `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | 
 | `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `fee_components`  | Array of objects (FeeComponent) | No       | The charges that were applied for this delivery; sums to fee.       |
@@ -424,6 +426,9 @@ Creates a delivery.
 | `order_contains`  |  object (OrderContains) | No       | An object that specifies the restricted item(s) contained in this order.        |
 | &nbsp;&nbsp;↳ `alcohol`   | boolean | No  | Flag to specify if the delivery contains alcohol. |
 | `driver_allowed_vehicles	`  | Array of strings | No       | Items Enum: 'car', 'bicycle', 'walking'. The vehicle type(s) that a Driver can use to complete this delivery. The default is 'car'.        |
+| `dropoff_options`  | object | No       | Additional options for drop off.        |
+| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
+| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
 <!-- 
 | `action_if_undeliverable`  | string | No       | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'.        |
 | `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
@@ -458,7 +463,6 @@ Creates a delivery.
     "dropoff_contact_family_name": "Doe",
     "dropoff_contact_send_notifications": true,
     "dropoff_options": {
-      "signature": "required",
       "id_verification": "required",
       "proof_of_delivery": "photo_required"
     },
@@ -552,6 +556,9 @@ Creates a delivery.
 | `driver_vehicle_make`  | string | No       | Make of the Driver's vehicle.        |
 | `driver_vehicle_model`  | string | No       | Model of the Driver's vehicle.        |
 | `driver_vehicle_year`  | string | No       | Year of the Driver's vehicle.        |
+| `dropoff_options`  | object | No       | Additional options for drop off.        |
+| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
+| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
 <!-- | `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | 
 | `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `fee_components`  | Array of objects (FeeComponent) | No       | The charges that were applied for this delivery; sums to fee.       |
@@ -735,6 +742,9 @@ Cancel a delivery. Deliveries can't be cancelled after a Driver is assigned.
 | `driver_vehicle_make`  | string | No       | Make of the Driver's vehicle.        |
 | `driver_vehicle_model`  | string | No       | Model of the Driver's vehicle.        |
 | `driver_vehicle_year`  | string | No       | Year of the Driver's vehicle.        |
+| `dropoff_options`  | object | No       | Additional options for drop off.        |
+| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
+| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
 <!--| `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | 
 | `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `fee_components`  | Array of objects (FeeComponent) | No       | The charges that were applied for this delivery; sums to fee.       |
@@ -789,7 +799,6 @@ Cancel a delivery. Deliveries can't be cancelled after a Driver is assigned.
       "dropoff_contact_family_name": "Doe",
       "dropoff_contact_send_notifications": true,
       "dropoff_options": {
-        "signature": "required",
         "id_verification": "required",
         "proof_of_delivery": "photo_required"
       },
@@ -981,6 +990,9 @@ Returns the status and details of a delivery that client created. Client can pro
 | `driver_vehicle_make`  | string | No       | Make of the Driver's vehicle.        |
 | `driver_vehicle_model`  | string | No       | Model of the Driver's vehicle.        |
 | `driver_vehicle_year`  | string | No       | Year of the Driver's vehicle.        |
+| `dropoff_options`  | object | No       | Additional options for drop off.        |
+| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
+| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
 <!-- | `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | 
 | `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `fee_components`  | Array of objects (FeeComponent) | No       | The charges that were applied for this delivery; sums to fee.       |
@@ -1141,6 +1153,9 @@ Update the details of a delivery. Only the fields listed below can be updated; t
 | &nbsp;&nbsp;↳ `barcode`   | string | No  | Barcode identifying the item. This value must be in one of the following formats: Data Matrix, AZTEC, Code 128, Code 39, Code 93, CODABAR, EAN 13, EAN 8, ITF, UPC A, UPC E, PDF417. Not updatable. |
 | `pickup_time`  | string | No       | Time details in ISO-8601 format.        |
 | `dropoff_time`  | string | No       |  Time details in ISO-8601 format.        |
+| `dropoff_options`  | object | No       | Additional options for drop off.        |
+| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
+| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
 <!-- 
 | `action_if_undeliverable`  | string | No       | Enum: "return_to_pickup" "dispose" What the Driver should do if the delivery is undeliverable. The default is 'dispose'.        |
 | `dropoff_requires_signature`  | boolean | No       | Whether the delivery requires signature verification during drop-off.        |
@@ -1175,7 +1190,6 @@ Update the details of a delivery. Only the fields listed below can be updated; t
       "dropoff_contact_family_name": "Doe",
       "dropoff_contact_send_notifications": true,
       "dropoff_options": {
-        // "signature": "required",
         "id_verification": "required",
         "proof_of_delivery": "photo_required"
       },
@@ -1270,6 +1284,9 @@ Update the details of a delivery. Only the fields listed below can be updated; t
 | `driver_vehicle_make`  | string | No       | Make of the Driver's vehicle.        |
 | `driver_vehicle_model`  | string | No       | Model of the Driver's vehicle.        |
 | `driver_vehicle_year`  | string | No       | Year of the Driver's vehicle.        |
+| `dropoff_options`  | object | No       | Additional options for drop off.        |
+| &nbsp;&nbsp;↳ `id_verification`   | string | No  | Enum: "required" "preferred" "none" Flag to specify if ID verification is required at drop-off. If order contains alcohol, this field needs to be set to 'required'. Not updatable. |
+| &nbsp;&nbsp;↳ `proof_of_delivery`   | string | No  | Enum: "photo_required" "photo_preferred" "pin_code" "none" Flag to specify if the delivery requires proof of delivery during drop off. Not updatable. |
 <!-- | `dropoff_signature_image_url`  | string | No       | Link to a picture of the dropoff contact's signature that was collected by the Driver during drop off.        | 
 | `tracking_url`  | string | No       | Tracking page for the delivery that you can use or share with the sender and/or receiver of the delivery. Note: the URL format is not fixed and may change over time.        |
 | `fee_components`  | Array of objects (FeeComponent) | No       | The charges that were applied for this delivery; sums to fee.       |
@@ -1324,7 +1341,6 @@ Update the details of a delivery. Only the fields listed below can be updated; t
       "dropoff_contact_family_name": "Doe",
       "dropoff_contact_send_notifications": true,
       "dropoff_options": {
-        "signature": "required",
         "id_verification": "required",
         "proof_of_delivery": "photo_required"
       },
